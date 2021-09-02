@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sy.s4.notice.NoticeDAO">
+	
+	<select id="getList" resultType="com.sy.s4.notice.NoticeDTO">
+		select * from notice
+	</select>
+	
+	<select id="getSelect" parameterType="com.sy.s4.notice.NoticeDTO" resultType="com.sy.s4.notice.NoticeDTO">
+		SELECT * FROM NOTICE WHERE NUM=#{num}
+	</select>
+</mapper>
