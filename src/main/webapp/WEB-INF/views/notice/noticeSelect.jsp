@@ -15,9 +15,11 @@
 	<h4>Notice NUM: ${dto.num}</h4>
 	<h4>Notice TITLE: ${dto.title}</h4>
 	<h4>Notice CONTENTS: ${dto.contents}</h4>
-	<h4>Notice WRITERS: ${dto.writers}</h4>
+	<h4>Notice WRITER: ${dto.writer}</h4>
 	<h4>Notice REGDATE: ${dto.regdate}</h4>
 	<h4>Notice HITS: ${dto.hits}</h4>
+	
+	<a href="./noticeDelete?num=${dto.num}">DELETE</a>
 	
 </body>
 </html>

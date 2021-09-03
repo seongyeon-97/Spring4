@@ -13,4 +13,17 @@
 	<select id="getSelect" parameterType="com.sy.s4.notice.NoticeDTO" resultType="com.sy.s4.notice.NoticeDTO">
 		SELECT * FROM NOTICE WHERE NUM=#{num}
 	</select>
+	
+	<insert id="setInsert" parameterType="com.sy.s4.notice.NoticeDTO">
+		INSERT INTO NOTICE VALUES(NOTICE_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, sysdate, 0)
+	</insert>
+	
+	<delete id="setDelete" parameterType="java.lang.Long">
+		DELETE FROM NOTICE WHERE NUM = #{num}
+	</delete>
+	
+	<update id="setUpdate" parameterType="com.sy.s4.notice.NoticeDTO">
+		UPDATE NOTICE SET TITLE=#{title}, CONTENTS=#{contents}, WRITER=#{writer} WHERE NUM=#{num} 
+	</update>
+	
 </mapper>

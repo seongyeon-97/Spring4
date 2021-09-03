@@ -13,7 +13,7 @@
    NOTICE
    NUM
    TITLE
-   CONTENTS
+   CONTENTS : textares
    WRITER
    REGDATE
    HITS
@@ -22,10 +22,14 @@
 
 3. 기능
 	1) List
-		/notice/list
+		/notice/list  GET방식
 		/WEB-INF/views/board/list.jsp
 	2) 상세
-		/notice/select
+		/notice/select  GET방식
 		/WEB-INF/views/board/select.jsp
 	3) 글쓰기
+		/notice/insert  GET방식
+		/WEB-INF/views/board/Insert.jsp 		title, contents, writers
+		/notice/insert  POST방식
+		list page로 이동
 	4) 삭제

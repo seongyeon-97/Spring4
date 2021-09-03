@@ -15,20 +15,20 @@
 		<div class="col-md-8 mx-auto">
 		<table class="table table-striped table-hover">
 			<tr align=center>
-				<th>NUM</th><th>TITLE</th><th>CONTENTS</th><th>WRITERS</th><th>REGDATE</th><th>HITS</th>				
+				<th>NUM</th><th>TITLE</th><th>CONTENTS</th><th>WRITER</th><th>REGDATE</th><th>HITS</th>				
 			</tr>
 			<c:forEach items="${list}" var="dto">
 				<tr align=center>
 					<td>${dto.num}</td>
 					<td><a href="./noticeSelect?num=${dto.num}">${dto.title}</a></td>
 					<td>${dto.contents}</td>
-					<td>${dto.writers}</td>
+					<td>${dto.writer}</td>
 					<td>${dto.regdate}</td>
 					<td>${dto.hits}</td>
 				</tr>
 			</c:forEach>			
 		</table>
-		<a href="./bankbookInsert" class="btn btn-danger">ADD</a>
+		<a href="./noticeInsert" class="btn btn-danger">ADD</a>
 		</div>
 	</div>
 </body>

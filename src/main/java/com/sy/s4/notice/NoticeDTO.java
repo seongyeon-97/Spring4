@@ -3,17 +3,17 @@ package com.sy.s4.notice;
 import java.sql.Date;
 
 public class NoticeDTO {
-	private int num;
+	private long num;
 	private String title;
 	private String contents;
-	private String writers;
+	private String writer;
 	private Date regdate;
-	private int hits;
+	private long hits;
 	
-	public int getNum() {
+	public long getNum() {
 		return num;
 	}
-	public void setNum(int num) {
+	public void setNum(long num) {
 		this.num = num;
 	}
 	public String getTitle() {
@@ -28,11 +28,11 @@ public class NoticeDTO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getWriters() {
-		return writers;
+	public String getWriter() {
+		return writer;
 	}
-	public void setWriters(String writers) {
-		this.writers = writers;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	public Date getRegdate() {
 		return regdate;
@@ -40,10 +40,10 @@ public class NoticeDTO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public int getHits() {
+	public long getHits() {
 		return hits;
 	}
-	public void setHits(int hits) {
+	public void setHits(long hits) {
 		this.hits = hits;
 	}
 }

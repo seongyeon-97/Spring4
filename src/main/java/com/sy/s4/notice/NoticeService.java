@@ -18,4 +18,13 @@ public class NoticeService {
 	public NoticeDTO getSelect(NoticeDTO noticeDTO) {
 		return noticeDAO.getSelect(noticeDTO);
 	}
+	
+	public int setInsert(NoticeDTO noticeDTO) {
+		return noticeDAO.setInsert(noticeDTO);
+	}
+	
+	public int setDelete(Long num) {
+		return noticeDAO.setDelete(num);
+	}
+	
 }
