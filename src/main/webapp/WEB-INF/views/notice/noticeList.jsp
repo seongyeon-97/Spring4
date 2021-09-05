@@ -28,6 +28,12 @@
 				</tr>
 			</c:forEach>			
 		</table>
+		
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
+			<a href="./noticeList?pn=${n}">${n}</a>
+		</c:forEach>
+		
+		
 		<a href="./noticeInsert" class="btn btn-danger">ADD</a>
 		</div>
 	</div>

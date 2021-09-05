@@ -20,6 +20,8 @@
 	<h4>Notice HITS: ${dto.hits}</h4>
 	
 	<a href="./noticeDelete?num=${dto.num}">DELETE</a>
+	<a href="./noticeUpdate?num=${dto.num}">UPDATE</a>
+	
 	
 </body>
 </html>

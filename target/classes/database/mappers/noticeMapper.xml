@@ -6,8 +6,12 @@
   
 <mapper namespace="com.sy.s4.notice.NoticeDAO">
 	
-	<select id="getList" resultType="com.sy.s4.notice.NoticeDTO">
-		select * from notice
+	<select id="getList" resultType="com.sy.s4.notice.NoticeDTO" parameterType="com.sy.s4.util.Pager">
+		SELECT * FROM
+		(SELECT ROWNUM R, NU.* FROM
+		(SELECT * FROM NOTICE 
+		ORDER BY NUM DESC) NU)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
 	<select id="getSelect" parameterType="com.sy.s4.notice.NoticeDTO" resultType="com.sy.s4.notice.NoticeDTO">
