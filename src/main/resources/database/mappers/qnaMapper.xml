@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.sy.s4.board.qna.QnaDAO">
+  
+  	<select id="getList" resultType="QnaDTO" parameterType="com.sy.s4.util.Pager">
+  		SELECT * FROM
+			(SELECT ROWNUM R, BK.* FROM
+				(SELECT * FROM QNA
+				WHERE  				
+				<choose>
+					<when test="kind == 'num'">
+						num	
+					</when>
+					<when test="kind == 'title'">
+						title
+					</when>
+					<when test="kind == 'contents'">
+						contents
+					</when>				
+					<otherwise>
+						writer	
+					</otherwise>
+				</choose>				
+				LIKE '%' || #{search} || '%'
+				ORDER BY NUM DESC) BK)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+  	</select>
+  
+  	<select id="getCount" resultType="java.lang.Long" parameterType="com.sy.s4.util.Pager">
+  		SELECT COUNT(NUM) FROM QNA
+  		WHERE  				
+				<choose>
+					<when test="kind == 'num'">
+						num	
+					</when>
+					<when test="kind == 'title'">
+						title
+					</when>
+					<when test="kind == 'contents'">
+						contents
+					</when>				
+					<otherwise>
+						writer	
+					</otherwise>
+				</choose>				
+				LIKE '%' || #{search} || '%'				
+  	</select>
+  </mapper>
