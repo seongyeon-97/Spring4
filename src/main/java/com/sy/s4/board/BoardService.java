@@ -16,9 +16,11 @@ public interface BoardService {
 	public int setInsert(BoardDTO boardDTO) throws Exception;
 		
 	//삭ㅈㅔ
-	public int setDelete(BoardDTO boardDTO) throws Exception;
+	public int setDelete(Long num) throws Exception;
 		
 	//수정
 	public int setUpdate(BoardDTO boardDTO) throws Exception;
+	
+	//조회수 업데이트
 	
 }

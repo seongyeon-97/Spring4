@@ -18,7 +18,6 @@
 		
 		 <div class="input-group mb-3" >
 		  <select name="kind" class="form-select form-select-sm" aria-label=".form-select-sm example">
-			  <option value="num">num</option>
 			  <option value="title">title</option>
 			  <option value="contents">contents</option>
 			  <option value="writer">writer</option>
@@ -38,7 +37,15 @@
 			<c:forEach items="${list}" var="dto">
 				<tr align=center>
 					<td>${dto.num}</td>
-					<td><a href="./noticeSelect?num=${dto.num}">${dto.title}</a></td>
+					<td><a href="./select?num=${dto.num}">
+						
+						<c:catch>
+						<c:forEach begin="1" end="${dto.depth}">
+							--
+						</c:forEach>
+						</c:catch>
+						
+					${dto.title}</a></td>					
 					<td>${dto.contents}</td>
 					<td>${dto.writer}</td>
 					<td>${dto.regdate}</td>
@@ -82,7 +89,7 @@
 		<!-- Paging finish-->
 		
 		
-		<a href="./noticeInsert" class="btn btn-danger">ADD</a>
+		<a href="./insert" class="btn btn-danger">ADD</a>
 		</div>
 	</div>
 </body>

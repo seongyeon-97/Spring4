@@ -6,15 +6,12 @@
   
   <mapper namespace="com.sy.s4.board.notice.NoticeDAO">
   
-  <select id="getList" resultType="NoticeDTO" parameterType="com.sy.s4.util.Pager">
+  <select id="getList" resultType="NoticeDTO" parameterType="Pager">
 			SELECT * FROM
 			(SELECT ROWNUM R, BK.* FROM
 				(SELECT * FROM NOTICE
 				WHERE  				
-				<choose>
-					<when test="kind == 'num'">
-						num	
-					</when>
+				<choose>					
 					<when test="kind == 'title'">
 						title	
 					</when>
@@ -44,18 +41,19 @@
 			DELETE FROM NOTICE WHERE NUM=#{num}
 		</delete>
 		
+		<update id="setHitUpdate" parameterType="BoardDTO">
+			UPDATE NOTICE SET HITS = HITS+1 WHERE NUM=#{num}
+		</update>
+		
 		<update id="setUpdate" parameterType="BoardDTO">
 			UPDATE NOTICE SET TITLE=#{title},CONTENTS=#{contents},WRITER=#{writer} 
 			WHERE NUM=#{num}
 		</update>
 		
-		<select id="getCount" resultType="java.lang.Long" parameterType="com.sy.s4.util.Pager">
+		<select id="getCount" resultType="Long" parameterType="Pager">
   		SELECT COUNT(NUM) FROM NOTICE
   		WHERE  				
-				<choose>
-					<when test="kind == 'num'">
-						num	
-					</when>
+				<choose>				
 					<when test="kind == 'title'">
 						title	
 					</when>
@@ -66,7 +64,14 @@
 						writer	
 					</otherwise>
 				</choose>				
-				LIKE '%' || #{search} || '%'				
+				LIKE '%' || #{search} || '%'
+				
+		<!-- if 문을 사용했을때
+			SELECT COUNT(NUM) FROM NOTICE
+			<if test="kind == 'title'> WHERE TITLE LIKE '%' || #{search} || '%'</if>
+			<if test="kind == 'contents'> WHERE CONTENTS LIKE '%' || #{search} || '%'</if>
+			<if test="kind == 'writer'> WHERE WRITER LIKE '%' || #{search} || '%'</if>			
+		 -->						
   	</select>
   	
   

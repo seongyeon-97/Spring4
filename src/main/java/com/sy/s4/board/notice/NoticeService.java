@@ -27,25 +27,25 @@ public class NoticeService implements BoardService{
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return noticeDAO.getSelect(boardDTO);
 	}
 
 	@Override
 	public int setInsert(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAO.setInsert(boardDTO);
 	}
 
 	@Override
-	public int setDelete(BoardDTO boardDTO) throws Exception {
+	public int setDelete(Long num) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAO.setDelete(num);
 	}
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAO.setUpdate(boardDTO);
 	}
 	
 }
