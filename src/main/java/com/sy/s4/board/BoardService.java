@@ -21,6 +21,6 @@ public interface BoardService {
 	//수정
 	public int setUpdate(BoardDTO boardDTO) throws Exception;
 	
-	//조회수 업데이트
+	
 	
 }

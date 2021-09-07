@@ -90,4 +90,6 @@ public class NoticeController {
 		mv.setViewName("redirect: ./list");
 		return mv;
 	}
+	
+	
 }
