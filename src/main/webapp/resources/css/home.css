@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
-h1{
+#h1{
+	color: red
+}
+
+#t_1{
+	color: red
+}
+
+#w_1{
 	color: red
 }
