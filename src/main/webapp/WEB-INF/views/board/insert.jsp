@@ -33,10 +33,11 @@
   		
 		
 	
-		<button type="submit" class="btn btn-success">SUBMIT</button>
+		<button id="b1" type="button" class="btn btn-success">SUBMIT</button>
 		
 		</form>
 		
 	</div>
+	<script type="text/javascript" src="../resources/js/boardCheck.js"></script>
 </body>
 </html>
