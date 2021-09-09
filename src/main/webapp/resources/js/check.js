@@ -22,9 +22,9 @@
 			/*alert(s.dataset.checkNum);*/
 			for(c of c1){
 				if(!c.checked){
-					result = false;
-					break;
-				}				
+					result = false;	
+					break;				
+				}							
 			}			
 			all.checked = result;			
 		})

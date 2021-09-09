@@ -26,6 +26,11 @@
 		</div>
 		
 		<div class="mb-3">
+		  <label for="passwordcheck" class="form-label">비밀번호 확인</label>
+		  <input type="text" class="form-control" name="passwordcheck" id="passwordcheck">
+		</div>
+		
+		<div class="mb-3">
 		  <label for="name" class="form-label">이름</label>
 		  <input type="text" class="form-control" name="name" id="name">
 		</div>
