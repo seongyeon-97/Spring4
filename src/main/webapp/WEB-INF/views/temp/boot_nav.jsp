@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
 	  <div class="container-fluid">
@@ -29,13 +30,27 @@
 	          </ul>
 	        </li>
 	        
-	          	<li class="nav-item">
-	          		<a class="nav-link" href="${pageContext.request.contextPath}/member/check">CHECK</a>
-	        	</li>	        	
-	        	<li class="nav-item">
-	          		<a class="nav-link" href="${pageContext.request.contextPath}/member/login">LOGIN</a>
-	        	</li>
-	        
+	        <c:choose>
+	        	
+	        	<c:when test="${not empty member}">
+	        		<li class="nav-item">
+	          			<a class="nav-link" href="${pageContext.request.contextPath}/member/mypage">MYPAGE</a>
+	        		</li>	        	
+	        		<li class="nav-item">
+	          			<a class="nav-link" href="${pageContext.request.contextPath}/member/logout">LOGOUT</a>
+	        		</li>
+	        	</c:when>
+	        	
+	        	<c:otherwise>
+	        		<li class="nav-item">
+	          			<a class="nav-link" href="${pageContext.request.contextPath}/member/check">CHECK</a>
+	        		</li>	        	
+	        		<li class="nav-item">
+	          			<a class="nav-link" href="${pageContext.request.contextPath}/member/login">LOGIN</a>
+	        		</li>
+	        	</c:otherwise>
+	        	
+	        </c:choose>
 	      </ul>	      
 	    </div>
 	  </div>

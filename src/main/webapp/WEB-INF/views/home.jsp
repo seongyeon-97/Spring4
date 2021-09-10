@@ -12,9 +12,11 @@
 <body>
 	<c:import url="./temp/boot_nav.jsp"></c:import>
 	
-	<script type="text/javascript">
-		console.log('body Script');
-	</script>
-	
+	<c:if test="${not empty member}">
+		<h3>Login이 성공했을때 보이는 문장</h3>
+	</c:if>
+	<c:if test="${empty member}">
+		<h3>Login을 하기 전에 보이는 문장</h3>
+	</c:if>
 </body>
 </html>

@@ -5,7 +5,7 @@
  const all = document.getElementById('all');
  const c1 = document.getElementsByClassName('c1');
  const btn = document.getElementById('btn');
-
+ const ch = document.getElementsByClassName('ch');
  
  all.addEventListener('click', function(){
 	
@@ -31,7 +31,16 @@
 	}
 	
 	btn.addEventListener('click', function(){
-		if(all.checked){
+		let result = true;
+		
+		for(let cs of ch){
+			if(!cs.checked){
+				result = false;
+				break;
+			}
+		}
+		
+		if(result){
 			location.href = "./join";
 		}else{
 			alert("필수 약관에 동의하셔야 합니다");

@@ -21,25 +21,25 @@
  		</label>
 	</div>
 	<div class="form-check">
-  		<input class="form-check-input c1" data-check-num="0" type="checkbox" value="" id="flexCheckDefault">
+  		<input class="form-check-input c1 ch" type="checkbox" value="" id="flexCheckDefault">
   		<label class="form-check-label" for="flexCheckDefault">
     		약관1
  		</label>
 	</div>
 	<div class="form-check">
-  		<input class="form-check-input c1" data-check-num="0" type="checkbox" value="" id="flexCheckDefault">
+  		<input class="form-check-input c1 ch" type="checkbox" value="" id="flexCheckDefault">
   		<label class="form-check-label" for="flexCheckDefault">
     		약관2
  		</label>
 	</div>
 	<div class="form-check">
-  		<input class="form-check-input c1" data-check-num="0" type="checkbox" value="" id="flexCheckDefault">
+  		<input class="form-check-input c1 ch" type="checkbox" value="" id="flexCheckDefault">
   		<label class="form-check-label" for="flexCheckDefault">
     		약관3
  		</label>
 	</div>
 	<div class="form-check">
-  		<input class="form-check-input c1" data-check-num="1" type="checkbox" value="" id="flexCheckDefault">
+  		<input class="form-check-input c1" type="checkbox" value="" id="flexCheckDefault">
   		<label class="form-check-label" for="flexCheckDefault">
     		약관4(광고성)
  		</label>
