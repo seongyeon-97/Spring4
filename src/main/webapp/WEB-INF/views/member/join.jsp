@@ -23,8 +23,8 @@
 		</div>
 		
 		<div class="mb-3">
-		  <label for="password" class="form-label">비밀번호</label>
-		  <input type="password" class="form-control c1 pw" name="password" id="password">
+		  <label for="pw" class="form-label">비밀번호</label>
+		  <input type="password" class="form-control c1 pw" name="pw" id="pw">
 		</div>
 		
 		<div class="mb-3">
@@ -50,7 +50,7 @@
 		
 		<div class="mb-3 my-4">
 		  <label class="form-label"></label>
-		  <button id="btn" type="button" class="btn btn-primary">JOIN</button>
+		  <button id="btn" type="submit" class="btn btn-primary">JOIN</button>
 		</div>
 		
 		</form>

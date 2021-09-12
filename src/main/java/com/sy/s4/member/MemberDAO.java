@@ -13,6 +13,18 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.sy.s4.member.MemberDAO.";
 	
+	public int setDelete(String id) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", id);
+	}
+	
+	public int setUpdate(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", memberDTO);
+	}
+	
+	public int setJoin(MemberDTO memberDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setJoin", memberDTO);
+	}
+	
 	public MemberDTO getLogin(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getLogin", memberDTO);
 	}

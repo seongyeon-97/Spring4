@@ -18,6 +18,34 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@RequestMapping("memberDelete")
+	public String setDelete(String id, HttpSession session) throws Exception{
+		int result = memberService.setDelete(id);
+		session.invalidate();
+		return "redirect: ../";
+	}
+	
+	@GetMapping("memberUpdate")
+	public ModelAndView setUpdate(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberUpdate");
+		mv.addObject("member", memberDTO);
+		return mv;
+	}
+	
+	@PostMapping("memberUpdate")
+	public ModelAndView setUpdate(MemberDTO memberDTO, ModelAndView mv) throws Exception{
+		int result = memberService.setUpdate(memberDTO);
+		mv.setViewName("redirect: ../");
+		return mv;
+	}
+	
+	@PostMapping("join")
+	public String join(MemberDTO memberDTO) throws Exception{
+		int result = memberService.setJoin(memberDTO);
+		return "redirect: ../";
+	}
+	
 	@GetMapping("mypage")
 	public ModelAndView mypage() throws Exception{
 		ModelAndView mv = new ModelAndView();

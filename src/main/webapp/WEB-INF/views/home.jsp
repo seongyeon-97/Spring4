@@ -13,10 +13,10 @@
 	<c:import url="./temp/boot_nav.jsp"></c:import>
 	
 	<c:if test="${not empty member}">
-		<h3>Login이 성공했을때 보이는 문장</h3>
+		<h3>${member.id}님 환영합니다~!~!</h3>
 	</c:if>
 	<c:if test="${empty member}">
-		<h3>Login을 하기 전에 보이는 문장</h3>
+		<h3>Login이 필요합니다</h3>
 	</c:if>
 </body>
 </html>

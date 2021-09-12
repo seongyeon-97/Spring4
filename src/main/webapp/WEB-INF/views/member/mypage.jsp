@@ -13,8 +13,12 @@
 	<c:import url="../temp/boot_nav.jsp"></c:import>
 	<h1>My Page</h1>
 	<h1>ID : ${member.id}</h1>
+	<h1>PW : ${member.pw}</h1>
 	<h1>NAME : ${member.name}</h1>
 	<h1>PHONE : ${member.phone}</h1>
 	<h1>E-mail : ${member.email}</h1>
+	
+	<a href="./memberUpdate?id=${member.id}">정보수정</a>
+	<a href="./memberDelete?id=${member.id}">회원탈퇴</a>
 </body>
 </html>

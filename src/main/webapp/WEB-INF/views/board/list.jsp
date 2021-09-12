@@ -88,9 +88,13 @@
 		</nav>
 		<!-- Paging finish-->
 		
-		
-		<a href="./insert" class="btn btn-danger">ADD</a>
+		<a href="./insert">
+			<c:if test="${not empty sessionScope.member}">
+			 ADD
+			</c:if>
+		</a>
 		</div>
 	</div>
+	<script type="text/javascript" src="../resources/js/list.js"></script>
 </body>
 </html>

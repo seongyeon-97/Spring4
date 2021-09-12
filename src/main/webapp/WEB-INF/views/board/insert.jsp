@@ -22,7 +22,7 @@
 		
 		<div class="mb-3">
 		  <label for="writer" class="form-label">writer</label>
-		  <input type="text" class="form-control" name="writer" id="writer">
+		  <input type="text" class="form-control" value="${sessionScope.member.id}" name="writer" id="writer">
 		</div>
 		
 		<div class="mb-3">

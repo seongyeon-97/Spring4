@@ -2,6 +2,8 @@ package com.sy.s4.board.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.sy.s4.board.BoardDTO;
+import com.sy.s4.member.MemberDTO;
+import com.sy.s4.member.MemberService;
 import com.sy.s4.util.Pager;
 
 @Controller
@@ -28,12 +32,11 @@ public class NoticeController {
 	}
 	
 	@GetMapping("list")
-	public ModelAndView getList(ModelAndView mv, Pager pager) throws Exception{
+	public ModelAndView getList(ModelAndView mv, Pager pager, MemberDTO memberDTO, HttpSession session) throws Exception{
 		
 		List<BoardDTO> ar = noticeService.getList(pager);
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
-		
 		mv.setViewName("board/list");
 		
 		return mv;
