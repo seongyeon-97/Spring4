@@ -18,5 +18,6 @@
 	<c:if test="${empty member}">
 		<h3>Login이 필요합니다</h3>
 	</c:if>
+	<h1>Conflict</h1>
 </body>
 </html>
