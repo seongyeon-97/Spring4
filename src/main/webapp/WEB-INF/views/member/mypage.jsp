@@ -20,5 +20,6 @@
 	
 	<a href="./memberUpdate?id=${member.id}">정보수정</a>
 	<a href="./memberDelete?id=${member.id}">회원탈퇴</a>
+	
 </body>
 </html>

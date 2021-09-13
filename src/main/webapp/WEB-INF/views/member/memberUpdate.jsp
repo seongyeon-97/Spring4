@@ -22,22 +22,22 @@
 		</div>
 		<div class="mb-3">
 			<label for="pw" class="form-label">pw</label>
-			<input type="text" class="form-control" value="${member.pw}" name="pw">
+			<input type="text" class="form-control" value="${sessionScope.member.pw}" name="pw">
 		</div>
 		
 		<div class="mb-3">
 		  <label for="name" class="form-label">name</label>
-		  <input type="text" class="form-control" value="${member.name}" name="name">
+		  <input type="text" class="form-control" value="${sessionScope.member.name}" name="name">
 		</div>
 		
 		<div class="mb-3">
 		  <label for="phone" class="form-label">phone</label>		  
-		  <input type="text" class="form-control" value="${member.phone}" name="phone">
+		  <input type="text" class="form-control" value="${sessionScope.member.phone}" name="phone">
 		</div>
 		
 		<div class="mb-3">
 		  <label for="email" class="form-label">email</label>		  
-		  <input type="text" class="form-control" value="${member.email}" name="email">
+		  <input type="text" class="form-control" value="${sessionScope.member.email}" name="email">
 		</div>
 		
 		<button type="submit" class="btn btn-success">UPDATE</button>

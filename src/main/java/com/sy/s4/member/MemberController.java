@@ -34,16 +34,25 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberUpdate")
-	public ModelAndView setUpdate(MemberDTO memberDTO, ModelAndView mv) throws Exception{
+	public ModelAndView setUpdate(MemberDTO memberDTO, ModelAndView mv, HttpSession session) throws Exception{
 		int result = memberService.setUpdate(memberDTO);
+		session.setAttribute("member", memberDTO);
 		mv.setViewName("redirect: ../");
 		return mv;
 	}
 	
 	@PostMapping("join")
-	public String join(MemberDTO memberDTO) throws Exception{
+	public ModelAndView join(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		int result = memberService.setJoin(memberDTO);
-		return "redirect: ../";
+		String message = "회원가입 실패";
+		if(result>0) {
+			message = "회원가입 성공";
+		}
+		mv.addObject("msg", message);
+		mv.addObject("url", "../");
+		mv.setViewName("common/result");
+		return mv;
 	}
 	
 	@GetMapping("mypage")
