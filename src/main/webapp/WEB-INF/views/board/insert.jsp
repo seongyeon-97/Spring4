@@ -31,7 +31,7 @@
 		</div>
 		
 		<button id="fileAdd" type="button" class="btn btn-primary">file add</button>		  
-		
+		<button type="button" class="del">DELETE</button>
 		<div id="fileAddResult">
 			
 		</div>

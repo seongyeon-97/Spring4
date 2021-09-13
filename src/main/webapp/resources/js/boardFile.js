@@ -3,7 +3,7 @@
  */
   let file = '<div class="input-group mb-3">';
  file = file + '<input type="file" class="form-control" aria-describedby="button-addon2">';
- file = file + '<button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>';
+ file = file + '<button class="btn btn-outline-secondary del" type="button" id="button-addon2">X</button>';
  file = file + '</div>' 
  
  let count = 0;
@@ -14,4 +14,8 @@
 	}else{
 		alert('최대 5개까지만 가능합니다');
 	}
+});
+
+$(".del").click(function(){
+	alert('test');
 });
