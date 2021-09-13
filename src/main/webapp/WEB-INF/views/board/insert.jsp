@@ -30,13 +30,17 @@
 		  <textarea class="form-control" placeholder="Leave a comment here" name="contents" id="contents"></textarea>
 		</div>
 		
-  		
+		<button id="fileAdd" type="button" class="btn btn-primary">file add</button>		  
 		
-	
+		<div id="fileAddResult">
+			
+		</div>
+		
 		<button type="submit" class="btn btn-success">SUBMIT</button>
 		
 		</form>
 		
 	</div>
+	<script type="text/javascript" src="../resources/js/boardFile.js"></script>
 </body>
 </html>
