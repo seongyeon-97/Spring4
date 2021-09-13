@@ -18,6 +18,14 @@
 	<c:if test="${empty member}">
 		<h3>Login이 필요합니다</h3>
 	</c:if>
-
+	
+	<button id="btn">CLICK</button>
+	<script type="text/javascript">
+		$("#btn").click(function(){
+			alert('alert');
+		});
+	</script>
+	
+	
 </body>
 </html>
