@@ -1,49 +1,32 @@
 /**
  * 
  */
- 
- const all = document.getElementById('all');
- const c1 = document.getElementsByClassName('c1');
- const btn = document.getElementById('btn');
- const ch = document.getElementsByClassName('ch');
- 
- all.addEventListener('click', function(){
-	
-	/*전체 체크, 체크해제*/
-	for(let s of c1){
-		s.checked = all.checked;					
-	}
-});	
+ //모든걸 체크하면 다 하자
+ $("#all").click(function(){
+	$(".c1").prop("checked", $("#all").prop("checked"));
+});
 
-	/*하나라도 체크안되있으면 all 체크 해제, 모두 체크상태면 all 체크*/
-	for(let s of c1){
-		s.addEventListener('click', function(){
-			let result = true;
-			/*alert(s.dataset.checkNum);*/
-			for(c of c1){
-				if(!c.checked){
-					result = false;	
-					break;				
-				}							
-			}			
-			all.checked = result;			
-		})
-	}
-	
-	btn.addEventListener('click', function(){
-		let result = true;
-		
-		for(let cs of ch){
-			if(!cs.checked){
-				result = false;
-				break;
-			}
-		}
-		
-		if(result){
-			location.href = "./join";
-		}else{
-			alert("필수 약관에 동의하셔야 합니다");
+$(".c1").click(function(){
+	let result = true;
+	$(".c1").each(function(v1, v2){
+		if(!$(v2).prop("checked")){
+			result = false;
+			console.log(v1, $(v2).prop("checked"));
+			//break; 는 esch문 안에서 사용x
 		}
 	});
-	
+	$("#all").prop("checked", result);	
+});
+
+$("#btn").click(function(){
+	if($("#all").prop("checked")){
+		location.href = "join";
+	}else{
+		alert("약관 동의는 필수 입니다");
+	}		
+});
+
+
+ 
+
+ 

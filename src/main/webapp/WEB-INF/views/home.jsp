@@ -18,6 +18,17 @@
 	<c:if test="${empty member}">
 		<h3>Login이 필요합니다</h3>
 	</c:if>
-	<h1>Conflict</h1>
+	
+	<button id="btn">CLICK</button>
+	<script type="text/javascript">
+      /* const btn = document.getElementById("btn");
+      btn.addEventList */
+      // 위에가 아래로 바뀜
+   
+      $("#btn").click(function(){
+         alert("얍");
+      });
+   </script>
+	
 </body>
 </html>

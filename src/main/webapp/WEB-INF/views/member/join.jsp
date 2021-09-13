@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../temp/boot_head.jsp"></c:import>
+
 </head>
 <body>
 	<c:import url="../temp/boot_nav.jsp"></c:import>
@@ -48,13 +49,31 @@
 		  <input type="email" class="form-control c1" name="email" id="email">
 		</div>
 		
-		<div class="mb-3 my-4">
+		<div class="mb-3 my-4" id="files">
 		  <label class="form-label"></label>
-		  <button id="btn" type="submit" class="btn btn-primary">JOIN</button>
+		  <button id="add" type="button" class="btn btn-primary">file add</button>		  
+		</div>
+		
+		<!-- input file 추가 영역 -->
+		<div id="addResult">
+			
+		</div>
+		
+		<div class="mb-3 my-4">
+ 		    <label class="form-label"></label>
+  			<button id="btn" type="button" class="btn btn-primary">Join</button>
 		</div>
 		
 		</form>
+		
+		<div class="mb-3" id="f">
+		  <label for="photo" class="form-label">사진첨부</label>
+		  <input type="file" class="form-control c1" name="photo" id="photo">
 		</div>
+		
+		</div>
+		
 		<script type="text/javascript" src="../resources/js/join.js"></script>
+		<script type="text/javascript" src="../resources/js/file.js"></script>
 </body>
 </html>
