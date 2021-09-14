@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../temp/boot_head.jsp"></c:import>
+<style type="text/css">
+	#d1 {
+		width: 300px;
+		height: 300px;
+		background-color: yellow; 
+	}
+</style>
 </head>
 <body>
 	<c:import url="../temp/boot_nav.jsp"></c:import>
@@ -32,6 +39,7 @@
 		
 		<button id="fileAdd" type="button" class="btn btn-primary">file add</button>		  
 		<button type="button" class="del">DELETE</button>
+		
 		<div id="fileAddResult">
 			
 		</div>
@@ -41,6 +49,23 @@
 		</form>
 		
 	</div>
+	
+	<div id="d1">
+		<button id="c1">click</button>
+	</div>
+	
 	<script type="text/javascript" src="../resources/js/boardFile.js"></script>
+	
+	<script type="text/javascript">
+		
+		$("#d1").click(function(){
+			alert('d1');
+		});
+		
+		$('#c1').click(function () {
+			alert('c1');
+		});
+	</script>
+	
 </body>
 </html>
