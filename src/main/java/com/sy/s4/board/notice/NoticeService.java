@@ -37,10 +37,14 @@ public class NoticeService implements BoardService{
 		pager.makeRow();
 		return noticeDAO.getList(pager);
 	}
-
+	
+	public List<BoardFilesDTO> getFiles(BoardDTO boardDTO) throws Exception{
+		return noticeDAO.getFiles(boardDTO);
+	}
+	
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub		
 		noticeDAO.setHitUpdate(boardDTO);
 		return noticeDAO.getSelect(boardDTO);
 	}
@@ -68,7 +72,7 @@ public class NoticeService implements BoardService{
 			BoardFilesDTO boardFilesDTO = new BoardFilesDTO();
 			boardFilesDTO.setFileName(fileName);
 			boardFilesDTO.setOriName(multipartFile.getOriginalFilename());
-			boardFilesDTO.setFileNum(boardDTO.getNum());
+			boardFilesDTO.setNum(boardDTO.getNum());
 			
 			result = noticeDAO.setFile(boardFilesDTO);
 		}

@@ -6,6 +6,10 @@
   
   <mapper namespace="com.sy.s4.board.notice.NoticeDAO">
   
+  <select id="getFiles" parameterType="BoardDTO" resultType="BoardFilesDTO">
+  	select * from noticeFiles where num = #{num}
+  </select>
+  
    <insert id="setFile" parameterType="BoardFilesDTO">
       INSERT INTO NOTICEFILES (FILENUM, NUM, FILENAME, ORINAME) VALUES (FILES_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
    </insert>

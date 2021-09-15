@@ -18,6 +18,11 @@ public class NoticeDAO implements BoardDAO{
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.sy.s4.board.notice.NoticeDAO.";
 	
+	public List<BoardFilesDTO> getFiles(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE+"getFiles", boardDTO);
+	}
+	
 	@Override
 	public int setFile(BoardFilesDTO boardFilesDTO) throws Exception {
 		// TODO Auto-generated method stub

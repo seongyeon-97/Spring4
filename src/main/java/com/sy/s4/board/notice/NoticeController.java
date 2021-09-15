@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.sy.s4.board.BoardDTO;
+import com.sy.s4.board.BoardFilesDTO;
 import com.sy.s4.member.MemberDTO;
 import com.sy.s4.member.MemberService;
 import com.sy.s4.util.Pager;
@@ -69,8 +70,9 @@ public class NoticeController {
 	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		boardDTO = noticeService.getSelect(boardDTO);
-		
+		List<BoardFilesDTO> ar = noticeService.getFiles(boardDTO);
 		mv.addObject("dto", boardDTO);
+		mv.addObject("fileList", ar);
 		mv.setViewName("board/select");
 		return mv;
 	}

@@ -5,7 +5,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.sy.s4.board.qna.QnaDAO">
-  
+  	
+  	<select id="getFiles" parameterType="BoardDTO" resultType="BoardFilesDTO">
+  		select * from qnaFiles where num = #{num}
+  	</select>
+  	
+  	<insert id="setFile" parameterType="BoardFilesDTO">
+  		INSERT INTO QNAFILES (FILENUM, NUM, FILENAME, ORINAME) VALUES (FILES_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+  	</insert>
+  	
   	<select id="getList" resultType="QnaDTO" parameterType="Pager">
   		SELECT * FROM
 			(SELECT ROWNUM R, BK.* FROM
@@ -53,8 +61,11 @@
 	</select>
 	
 	<insert id="setInsert" parameterType="BoardDTO">
+		<selectKey order="BEFORE" resultType="Long" keyProperty="num">
+			select qna_seq.nextval from dual
+		</selectKey>
 		INSERT INTO QNA(NUM,TITLE,CONTENTS,WRITER,REGDATE,HITS, REF, STEP, DEPTH)
-		VALUES(QNA_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE, 0, QNA_SEQ.CURRVAL, 0, 0)		
+		VALUES(#{num},#{title},#{contents},#{writer},SYSDATE, 0, QNA_SEQ.CURRVAL, 0, 0)		
 	</insert>
 	
 	<delete id="setDelete" parameterType="BoardDTO">

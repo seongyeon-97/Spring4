@@ -21,6 +21,13 @@
 	<h1>hits: ${dto.hits}</h1>
 	
 	
+	<c:forEach items="${fileList}" var="f">
+		<div>
+		<img alt="" src="../resources/upload/${board}/${f.fileName}">
+		</div>
+	</c:forEach>
+	
+	
 	<a href="./delete?num=${dto.num}">DELETE</a>
 	<a href="./update?num=${dto.num}">UPDATE</a>
 	<c:if test="${board eq 'qna'}">
