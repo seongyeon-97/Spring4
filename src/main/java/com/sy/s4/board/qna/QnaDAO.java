@@ -58,9 +58,9 @@ public class QnaDAO implements BoardDAO{
 	}
 
 	@Override
-	public int setDelete(Long num) throws Exception {
+	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.delete(NAMESPACE+"setDelete", num);
+		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
 	}
 
 	@Override

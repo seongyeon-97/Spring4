@@ -18,7 +18,7 @@ public interface BoardService {
 	public int setInsert(BoardDTO boardDTO, MultipartFile [] files) throws Exception;
 		
 	//삭ㅈㅔ
-	public int setDelete(Long num) throws Exception;
+	public int setDelete(BoardDTO boardDTO) throws Exception;
 		
 	//수정
 	public int setUpdate(BoardDTO boardDTO) throws Exception;

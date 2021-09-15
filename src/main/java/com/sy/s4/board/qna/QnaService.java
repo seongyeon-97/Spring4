@@ -92,9 +92,17 @@ public class QnaService implements BoardService{
 	}
 
 	@Override
-	public int setDelete(Long num) throws Exception {
+	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return qnaDAO.setDelete(num);
+		String realPath = servletContext.getRealPath("/resources/upload/qna");
+		List<BoardFilesDTO> ar = qnaDAO.getFiles(boardDTO);
+		
+		for(BoardFilesDTO list : ar) {
+			File file = new File(realPath, list.getFileName());
+			file.delete();
+		}
+		
+		return qnaDAO.setDelete(boardDTO);
 	}
 
 	@Override

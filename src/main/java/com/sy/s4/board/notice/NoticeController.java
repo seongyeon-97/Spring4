@@ -78,8 +78,8 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("delete")
-	public String setDelete(Long num) throws Exception{
-		int result = noticeService.setDelete(num);
+	public String setDelete(BoardDTO boardDTO) throws Exception{
+		int result = noticeService.setDelete(boardDTO);
 		return "redirect: ./list";
 	}
 	
