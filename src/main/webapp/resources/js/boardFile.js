@@ -3,7 +3,7 @@
  */
  //다시 불러오는거기 때문에 id를 걸어서 이벤트를 줄수가 없다
   let file = '<div class="input-group mb-3">';
- 	file = file + '<input type="file" class="form-control" aria-describedby="button-addon2">';
+ 	file = file + '<input type="file" name="files" class="form-control" aria-describedby="button-addon2">';
  	file = file + '<button class="btn btn-outline-secondary del" type="button" id="button-addon2">X</button>';
  	file = file + '</div>'
  

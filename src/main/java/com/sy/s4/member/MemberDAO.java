@@ -18,8 +18,8 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"getFile", memberDTO);
 	}
 	
-	public int setDelete(String id) throws Exception{
-		return sqlSession.delete(NAMESPACE+"setDelete", id);
+	public int setDelete(MemberDTO memberDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", memberDTO);
 	}
 	
 	public int setUpdate(MemberDTO memberDTO) throws Exception{

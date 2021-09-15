@@ -20,7 +20,7 @@
 	<h1>${board} Insert Page</h1>
 	
 	<div class="container-fluid">
-		<form class="col-md-5 mx-auto" action="./insert" method="post">
+		<form class="col-md-5 mx-auto" action="./insert" method="post" enctype="multipart/form-data">
 		
 		<div class="mb-3">
 		  <label for="title" class="form-label">title</label>

@@ -35,6 +35,6 @@
 		
 		</form>
 		</div>
-		<script type="text/javascript" src="../resources/js/login.js"></script>
+		<!-- <script type="text/javascript" src="../resources/js/login.js"></script> -->
 </body>
 </html>

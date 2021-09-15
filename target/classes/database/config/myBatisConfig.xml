@@ -12,5 +12,6 @@
   		<typeAlias type="com.sy.s4.member.MemberDTO" alias="MemberDTO"/>  		
   		<typeAlias type="java.lang.Long" alias="Long"/>
   		<typeAlias type="com.sy.s4.member.MemberFilesDTO" alias="MemberFilesDTO"/>
+  		<typeAlias type="com.sy.s4.board.BoardFilesDTO" alias="BoardFilesDTO"/>
   	</typeAliases>
   </configuration>

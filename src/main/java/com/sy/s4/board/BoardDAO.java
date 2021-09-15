@@ -5,6 +5,9 @@ import java.util.List;
 import com.sy.s4.util.Pager;
 
 public interface BoardDAO {
+	//file save
+	public int setFile(BoardFilesDTO boardFilesDTO) throws Exception;
+	
 	//전체 갯수 가져오기
 	public Long getCount(Pager pager) throws Exception;
 	

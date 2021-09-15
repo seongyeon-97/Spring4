@@ -20,8 +20,8 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@RequestMapping("memberDelete")
-	public String setDelete(String id, HttpSession session) throws Exception{
-		int result = memberService.setDelete(id);
+	public String setDelete(MemberDTO memberDTO, HttpSession session) throws Exception{
+		int result = memberService.setDelete(memberDTO);
 		session.invalidate();
 		return "redirect: ../";
 	}
