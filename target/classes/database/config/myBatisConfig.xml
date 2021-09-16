@@ -9,8 +9,9 @@
   		<typeAlias type="com.sy.s4.board.notice.NoticeDTO" alias="NoticeDTO"/>
   		<typeAlias type="com.sy.s4.board.qna.QnaDTO" alias="QnaDTO"/>
   		<typeAlias type="com.sy.s4.util.Pager" alias="Pager"/>
-  		<typeAlias type="com.sy.s4.member.MemberDTO" alias="MemberDTO"/>
-  		
+  		<typeAlias type="com.sy.s4.member.MemberDTO" alias="MemberDTO"/>  		
   		<typeAlias type="java.lang.Long" alias="Long"/>
+  		<typeAlias type="com.sy.s4.member.MemberFilesDTO" alias="MemberFilesDTO"/>
+  		<typeAlias type="com.sy.s4.board.BoardFilesDTO" alias="BoardFilesDTO"/>
   	</typeAliases>
   </configuration>

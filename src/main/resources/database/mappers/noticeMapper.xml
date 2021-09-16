@@ -6,6 +6,15 @@
   
   <mapper namespace="com.sy.s4.board.notice.NoticeDAO">
   
+  <select id="getFiles" parameterType="BoardDTO" resultType="BoardFilesDTO">
+  	select * from noticeFiles where num = #{num}
+  </select>
+  
+   <insert id="setFile" parameterType="BoardFilesDTO">
+      INSERT INTO NOTICEFILES (FILENUM, NUM, FILENAME, ORINAME) VALUES (FILES_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+   </insert>
+
+  
   <select id="getList" resultType="NoticeDTO" parameterType="Pager">
 			SELECT * FROM
 			(SELECT ROWNUM R, BK.* FROM
@@ -29,13 +38,20 @@
 		</select>
 		
 		<select id="getSelect" parameterType="BoardDTO" resultType="NoticeDTO">
-			SELECT * FROM NOTICE WHERE NUM=#{num}
+			SELECT N.*, NF.*
+			FROM NOTICE N
+ 		   	INNER JOIN 
+  			NOTICEFILES NF
+    		ON(N.NUM=NF.NUM) WHERE N.NUM=#{num};
 		</select>
 	
+	
 		<insert id="setInsert" parameterType="BoardDTO">
-			INSERT INTO NOTICE(NUM,TITLE,CONTENTS,WRITER,REGDATE,HITS)
-			VALUES(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0)
-		</insert>
+    	  <selectKey order="BEFORE" resultType="Long" keyProperty="num">
+      		SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+    	  </selectKey>
+    		INSERT INTO NOTICE (NUM, TITLE, CONTENTS, WRITER) VALUES (#{num}, #{title}, #{contents}, #{writer})
+  		</insert>
 	
 		<delete id="setDelete" parameterType="BoardDTO">
 			DELETE FROM NOTICE WHERE NUM=#{num}

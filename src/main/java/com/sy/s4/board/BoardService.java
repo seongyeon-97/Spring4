@@ -2,6 +2,8 @@ package com.sy.s4.board;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.sy.s4.util.Pager;
 
 public interface BoardService {
@@ -13,10 +15,10 @@ public interface BoardService {
 	public abstract BoardDTO getSelect(BoardDTO boardDTO) throws Exception;
 			
 	//글쓰기
-	public int setInsert(BoardDTO boardDTO) throws Exception;
+	public int setInsert(BoardDTO boardDTO, MultipartFile [] files) throws Exception;
 		
 	//삭ㅈㅔ
-	public int setDelete(Long num) throws Exception;
+	public int setDelete(BoardDTO boardDTO) throws Exception;
 		
 	//수정
 	public int setUpdate(BoardDTO boardDTO) throws Exception;

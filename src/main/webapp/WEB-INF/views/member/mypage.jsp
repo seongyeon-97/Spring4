@@ -18,8 +18,13 @@
 	<h1>PHONE : ${member.phone}</h1>
 	<h1>E-mail : ${member.email}</h1>
 	
+	<div>
+		<img alt="" src="../resources/upload/member/${files.fileName}">
+	</div>
+	
 	<a href="./memberUpdate?id=${member.id}">정보수정</a>
 	<a href="./memberDelete?id=${member.id}">회원탈퇴</a>
+	
 	
 </body>
 </html>
