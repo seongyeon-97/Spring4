@@ -1,12 +1,21 @@
 package com.sy.s4.member;
 
+import java.util.List;
+
 public class MemberDTO {
 	private String id;
 	private String pw;
 	private String name;
 	private String phone;
 	private String email;
+	private MemberFilesDTO memberFilesDTO;
 	
+	public MemberFilesDTO getMemberFilesDTO() {
+		return memberFilesDTO;
+	}
+	public void setMemberFilesDTO(MemberFilesDTO memberFilesDTO) {
+		this.memberFilesDTO = memberFilesDTO;
+	}
 	public String getId() {
 		return id;
 	}

@@ -37,12 +37,27 @@
 			
 		</select>
 		
-		<select id="getSelect" parameterType="BoardDTO" resultType="NoticeDTO">
+		<resultMap type="NoticeDTO" id="getSelectResult">
+			<id column="num" property="num"/>
+			<result column="title" property="title"/>
+			<result column="contents" property="contents"/>
+			<result column="writer" property="writer"/>
+			<result column="regdate" property="regdate"/>
+			<result column="hits" property="hits"/>
+			<collection property="files" javaType="List" ofType="BoardFilesDTO">
+				<id column="fileNum" property="fileNum"/>
+				<result column="num" property="num"/>
+				<result column="fileName" property="fileName"/>
+				<result column="oriName" property="oriName"/>				
+			</collection>
+		</resultMap>
+		
+		<select id="getSelect" parameterType="BoardDTO" resultMap="getSelectResult">
 			SELECT N.*, NF.*
 			FROM NOTICE N
- 		   	INNER JOIN 
+ 		   	LEFT JOIN 
   			NOTICEFILES NF
-    		ON(N.NUM=NF.NUM) WHERE N.NUM=#{num};
+    		ON(N.NUM=NF.NUM) WHERE N.NUM=#{num}
 		</select>
 	
 	

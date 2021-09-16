@@ -13,5 +13,6 @@
   		<typeAlias type="java.lang.Long" alias="Long"/>
   		<typeAlias type="com.sy.s4.member.MemberFilesDTO" alias="MemberFilesDTO"/>
   		<typeAlias type="com.sy.s4.board.BoardFilesDTO" alias="BoardFilesDTO"/>
+  		<typeAlias type="java.util.List" alias="List"/>
   	</typeAliases>
   </configuration>

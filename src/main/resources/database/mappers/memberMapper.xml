@@ -6,8 +6,27 @@
   
   <mapper namespace="com.sy.s4.member.MemberDAO">
   	
-  	<select id="getLogin" parameterType="MemberDTO" resultType="MemberDTO">
-  		SELECT * FROM MEMBER WHERE ID = #{id} AND PW = #{pw}
+  	<resultMap type="MemberDTO" id="getLoginResult">
+  		<id column="id" property="id"/>
+  		<result column="pw" property="pw"/>
+  		<result column="name" property="name"/>
+  		<result column="phone" property="phone"/>
+  		<result column="email" property="email"/>
+		<!-- 1:1관계 - DTO내에 다른 DTO 하나가 멤버변수로 선언 되어 있을때 -->
+		<association property="memberFilesDTO" javaType="MemberFilesDTO">
+			<id column="num" property="num"/>
+			<result column="FileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</association>  		  		
+  	</resultMap>
+  	
+  	<select id="getLogin" parameterType="MemberDTO" resultMap="getLoginResult">
+  		SELECT *
+		FROM MEMBER M
+   		LEFT JOIN
+    	MEMBERFILES MF
+		USING (ID) 
+		WHERE ID = #{id} AND PW = #{pw}
   	</select>
   	
   	<select id="getIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
