@@ -38,7 +38,11 @@
 		</select>
 		
 		<select id="getSelect" parameterType="BoardDTO" resultType="NoticeDTO">
-			SELECT * FROM NOTICE WHERE NUM=#{num}
+			SELECT N.*, NF.*
+			FROM NOTICE N
+ 		   	INNER JOIN 
+  			NOTICEFILES NF
+    		ON(N.NUM=NF.NUM) WHERE N.NUM=#{num};
 		</select>
 	
 	
