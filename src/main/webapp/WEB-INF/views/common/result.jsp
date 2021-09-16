@@ -12,6 +12,6 @@
 </script>
 </head>
 <body>
-	
+	<input type="hidden" id="msg" value="${msg}">
 </body>
 </html>
