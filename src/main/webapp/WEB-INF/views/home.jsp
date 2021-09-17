@@ -26,7 +26,9 @@
       // 위에가 아래로 바뀜
    
       $("#btn").click(function(){
-         alert("얍");
+         $.get("./ajax/t1?num=1", function(result) {
+			console.log(result);
+		});
       });
    </script>
 	
