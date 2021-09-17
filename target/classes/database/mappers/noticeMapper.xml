@@ -58,7 +58,6 @@
  		   	LEFT JOIN 
   			NOTICEFILES NF
     		ON(N.NUM=NF.NUM) WHERE N.NUM=#{num}
->>>>>>> Add_7_mybatis2
 		</select>
 	
 	
