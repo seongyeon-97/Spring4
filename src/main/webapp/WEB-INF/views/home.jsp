@@ -19,6 +19,8 @@
 		<h3>Login이 필요합니다</h3>
 	</c:if>
 	
+	<h1 id="ar"></h1>
+	
 	<button id="btn">CLICK</button>
 	<script type="text/javascript">
       /* const btn = document.getElementById("btn");
@@ -27,7 +29,8 @@
    
       $("#btn").click(function(){
          $.get("./ajax/t1?num=1", function(result) {
-			console.log(result);
+			console.log(result.trim());
+		$('#ar').html(result.trim());
 		});
       });
    </script>

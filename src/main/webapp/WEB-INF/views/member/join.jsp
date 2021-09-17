@@ -7,7 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../temp/boot_head.jsp"></c:import>
-
+<style type="text/css">
+	#idResult{
+		color: red;
+	}
+</style>
 </head>
 <body>
 	<c:import url="../temp/boot_nav.jsp"></c:import>
@@ -70,7 +74,9 @@
 		
 		</div>
 		
-		<!-- <script type="text/javascript" src="../resources/js/join.js"></script>
-		<script type="text/javascript" src="../resources/js/file.js"></script> -->
+		<script type="text/javascript" src="../resources/js/join.js"></script>
+		<script type="text/javascript" src="../resources/js/file.js"></script>
+		
+		
 </body>
 </html>
