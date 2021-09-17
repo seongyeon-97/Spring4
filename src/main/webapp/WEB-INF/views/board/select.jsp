@@ -15,15 +15,19 @@
 	
 	<h1>num: ${dto.num}</h1>
 	<h1>title : ${dto.title}</h1>
-	<h1>contents: ${dto.contents}</h1>
+	
+	<div>	
+		${dto.contents}
+	</div>
+	
 	<h1>writer: ${dto.writer}</h1>
 	<h1>regdate: ${dto.regdate}</h1>
 	<h1>hits: ${dto.hits}</h1>
 	
 	
-	<c:forEach items="${fileList}" var="f">
+	<c:forEach items="${dto.files}" var="f">
 		<div>
-		<img alt="" src="../resources/upload/${board}/${f.fileName}">
+		<a href="./down?fileName=${f.fileName}">${f.oriName}</a>
 		</div>
 	</c:forEach>
 	

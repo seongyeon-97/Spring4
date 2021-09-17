@@ -33,6 +33,14 @@ public class NoticeController {
 		return "notice";
 	}
 	
+	@GetMapping("down")
+	public ModelAndView fileDown(BoardFilesDTO boardFilesDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("dto", boardFilesDTO);
+		mv.setViewName("fileDown");
+		return mv;
+	}
+	
 	@GetMapping("list")
 	public ModelAndView getList(ModelAndView mv, Pager pager, MemberDTO memberDTO, HttpSession session) throws Exception{
 		
@@ -72,7 +80,7 @@ public class NoticeController {
 		boardDTO = noticeService.getSelect(boardDTO);
 		List<BoardFilesDTO> ar = noticeService.getFiles(boardDTO);
 		mv.addObject("dto", boardDTO);
-		mv.addObject("fileList", ar);
+		//mv.addObject("fileList", ar);
 		mv.setViewName("board/select");
 		return mv;
 	}
