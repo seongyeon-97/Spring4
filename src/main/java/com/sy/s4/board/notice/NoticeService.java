@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sy.s4.board.BoardDTO;
 import com.sy.s4.board.BoardFilesDTO;
 import com.sy.s4.board.BoardService;
+import com.sy.s4.board.CommentsDTO;
 import com.sy.s4.util.FileManager;
 import com.sy.s4.util.Pager;
 
@@ -29,6 +30,10 @@ public class NoticeService implements BoardService{
 	@Autowired
 	private FileManager fileManager;
 	
+	public List<CommentsDTO> getCommentList(Pager pager) throws Exception{
+		return noticeDAO.getCommentList(pager);
+	}
+	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
@@ -42,6 +47,10 @@ public class NoticeService implements BoardService{
 		return noticeDAO.getFiles(boardDTO);
 	}
 	
+	public CommentsDTO getCommentSelect(CommentsDTO commentsDTO) throws Exception{
+		return noticeDAO.getCommentSelect(commentsDTO);
+	}
+	
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub		
@@ -49,6 +58,10 @@ public class NoticeService implements BoardService{
 		return noticeDAO.getSelect(boardDTO);
 	}
 
+	public int setComment(CommentsDTO commentsDTO) throws Exception{
+		return noticeDAO.setComment(commentsDTO);
+	}
+		
 	@Override
 	public int setInsert(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub

@@ -7,7 +7,7 @@ public class CommentsDTO {
 	private Long num;
 	private String writer;
 	private String contents;
-	private Date regDate;
+	private Date regdate;
 	private String board;
 	public Long getCommentNum() {
 		return commentNum;
@@ -33,11 +33,11 @@ public class CommentsDTO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public Date getRegdate() {
+		return regdate;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 	public String getBoard() {
 		return board;

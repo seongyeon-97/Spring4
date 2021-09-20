@@ -43,8 +43,23 @@
 			  <textarea class="form-control" placeholder="Leave a comment here" name="contents" id="contents"></textarea>
 			</div>
 			
-			<button id="comment" type="button" class="btn btn-primary">WRITE</button>		  	
-		</div>
+			<button id="comment" type="submit" class="btn btn-primary">WRITE</button>		  	
+		</div>		
+		<table class="table table-striped table-hover">	
+			<tr align=center>
+				<th>COMMENTNUM</th><th>NUM</th><th>WRITER</th><th>CONTENTS</th><th>REGDATE</th><th>BOARD</th>				
+			</tr>
+			<c:forEach items="${commentList}" var="list">
+				<tr align=center>
+					<td>${list.commentNum}</td>				
+					<td>${list.num}</td>					
+					<td>${list.writer}</td>			
+					<td><a href="./commentSelect?commentNum=${list.commentNum}">${list.contents}</a></td>
+					<td>${list.regdate}</td>
+					<td>${list.board}</td>
+				</tr>
+			</c:forEach>			
+		</table>			
 	<hr>
 	
 	<a href="./delete?num=${dto.num}">DELETE</a>

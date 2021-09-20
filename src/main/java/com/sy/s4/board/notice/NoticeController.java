@@ -34,11 +34,6 @@ public class NoticeController {
 		return "notice";
 	}
 	
-	@PostMapping("comment")
-	public void setComment(CommentsDTO commentsDTO) throws Exception{
-		commentsDTO.setBoard("N");
-	}
-	
 	@GetMapping("down")
 	public ModelAndView fileDown(BoardFilesDTO boardFilesDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -46,6 +41,7 @@ public class NoticeController {
 		mv.setViewName("fileDown");
 		return mv;
 	}
+	
 	
 	@GetMapping("list")
 	public ModelAndView getList(ModelAndView mv, Pager pager, MemberDTO memberDTO, HttpSession session) throws Exception{
@@ -58,11 +54,32 @@ public class NoticeController {
 		return mv;
 	}
 	
+	@GetMapping("comment")
+	public ModelAndView setComment() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/select");
+		return mv;
+	}
+	
 	@GetMapping("insert")
 	public ModelAndView setInsert() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/insert");
 		return mv;
+	}
+	
+	@PostMapping("comment")
+	public void setComment(CommentsDTO commentsDTO) throws Exception{
+		commentsDTO.setBoard("N");
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setComment(commentsDTO);
+		System.out.println(commentsDTO.getCommentNum());
+		System.out.println(commentsDTO.getNum());
+		System.out.println(commentsDTO.getWriter());
+		System.out.println(commentsDTO.getContents());
+		System.out.println(commentsDTO.getRegdate());
+		System.out.println(commentsDTO.getBoard());
+		mv.setViewName("redirect: ./select");
 	}
 	
 	@PostMapping("insert")
@@ -80,11 +97,32 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@GetMapping("select")
-	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception{
+	/*
+	 * @RequestMapping("select") public ModelAndView getCommentList() throws
+	 * Exception{ ModelAndView mv = new ModelAndView();
+	 * mv.setViewName("board/select"); List<CommentsDTO> ar =
+	 * noticeService.getCommentList(); mv.addObject("commentList", ar);
+	 * System.out.println(ar.get(0).getCommentNum()); return mv; }
+	 */
+	
+	@GetMapping("commentSelect")
+	public ModelAndView getCommentSelect(CommentsDTO commentsDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		boardDTO = noticeService.getSelect(boardDTO);
+		commentsDTO = noticeService.getCommentSelect(commentsDTO);
+		mv.addObject("comment", commentsDTO);
+		mv.setViewName("board/commentSelect");
+		return mv;
+	}
+	
+	@GetMapping("select")
+	public ModelAndView getSelect(BoardDTO boardDTO, Pager pager) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<CommentsDTO> car = noticeService.getCommentList(pager);
+		boardDTO = noticeService.getSelect(boardDTO);			
 		List<BoardFilesDTO> ar = noticeService.getFiles(boardDTO);
+		System.out.println(car.get(0).getCommentNum());
+		mv.addObject("pager", pager);
+		mv.addObject("commentList", car);
 		mv.addObject("dto", boardDTO);
 		//mv.addObject("fileList", ar);
 		mv.setViewName("board/select");
