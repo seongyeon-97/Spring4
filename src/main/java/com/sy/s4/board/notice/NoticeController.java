@@ -36,9 +36,7 @@ public class NoticeController {
 	
 	@PostMapping("comment")
 	public void setComment(CommentsDTO commentsDTO) throws Exception{
-		System.out.println(commentsDTO.getWriter());
-		System.out.println(commentsDTO.getContents());
-		System.out.println(commentsDTO.getNum());
+		commentsDTO.setBoard("N");
 	}
 	
 	@GetMapping("down")
