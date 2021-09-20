@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sy.s4.board.BoardDTO;
 import com.sy.s4.board.BoardFilesDTO;
+import com.sy.s4.board.CommentsDTO;
 import com.sy.s4.member.MemberDTO;
 import com.sy.s4.member.MemberService;
 import com.sy.s4.util.Pager;
@@ -31,6 +32,11 @@ public class NoticeController {
 	@ModelAttribute("board")
 	public String getBoard() {
 		return "notice";
+	}
+	
+	@PostMapping("comment")
+	public void setComment(CommentsDTO commentsDTO) throws Exception{
+		commentsDTO.setBoard("N");
 	}
 	
 	@GetMapping("down")
