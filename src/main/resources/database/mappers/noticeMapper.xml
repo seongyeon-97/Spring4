@@ -19,16 +19,16 @@
       INSERT INTO NOTICEFILES (FILENUM, NUM, FILENAME, ORINAME) VALUES (FILES_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
    </insert>
 
-	<select id="getCommentSelect" parameterType="CommentsDTO" resultType="CommentsDTO">
-		SELECT * FROM COMMENTS WHERE COMMENTNUM = #{commentNum}
+	<select id="getCommentSelect" parameterType="BoardDTO" resultType="CommentsDTO">
+		SELECT * FROM COMMENTS WHERE NUM = #{num}
 	</select>
 
   <select id="getCommentList" resultType="CommentsDTO" parameterType="Pager">
   	SELECT * FROM
 			(SELECT ROWNUM R, CM.* FROM
 			(SELECT*
-			FROM COMMENTS
-			ORDER BY NUM DESC)CM)			
+			FROM COMMENTS 
+			ORDER BY NUM DESC)CM)
   </select>
   
   <select id="getList" resultType="NoticeDTO" parameterType="Pager">

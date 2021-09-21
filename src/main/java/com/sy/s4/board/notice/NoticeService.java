@@ -47,8 +47,8 @@ public class NoticeService implements BoardService{
 		return noticeDAO.getFiles(boardDTO);
 	}
 	
-	public CommentsDTO getCommentSelect(CommentsDTO commentsDTO) throws Exception{
-		return noticeDAO.getCommentSelect(commentsDTO);
+	public List<CommentsDTO> getCommentSelect(BoardDTO boardDTO) throws Exception{
+		return noticeDAO.getCommentSelect(boardDTO);
 	}
 	
 	@Override

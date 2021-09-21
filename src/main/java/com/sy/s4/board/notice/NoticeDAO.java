@@ -29,6 +29,7 @@ public class NoticeDAO implements BoardDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE+"setFile", boardFilesDTO);
 	}
+		
 	
 	@Override
 	public Long getCount(Pager pager) throws Exception {
@@ -46,8 +47,8 @@ public class NoticeDAO implements BoardDAO{
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
-	public CommentsDTO getCommentSelect(CommentsDTO commentsDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getCommentSelect", commentsDTO);
+	public List<CommentsDTO> getCommentSelect(BoardDTO boardDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getCommentSelect", boardDTO);
 	}
 	
 	@Override

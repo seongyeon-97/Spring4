@@ -43,13 +43,14 @@
 			  <textarea class="form-control" placeholder="Leave a comment here" name="contents" id="contents"></textarea>
 			</div>
 			
-			<button id="comment" type="submit" class="btn btn-primary">WRITE</button>		  	
+			<!-- <button id="comment" type="submit" class="btn btn-primary">WRITE</button> -->
+			<a href="./select?num=${dto.num}" id="comment">WRITE</a>		  	
 		</div>		
 		<table class="table table-striped table-hover">	
 			<tr align=center>
 				<th>COMMENTNUM</th><th>NUM</th><th>WRITER</th><th>CONTENTS</th><th>REGDATE</th><th>BOARD</th>				
 			</tr>
-			<c:forEach items="${commentList}" var="list">
+			<c:forEach items="${comment}" var="list">
 				<tr align=center>
 					<td>${list.commentNum}</td>				
 					<td>${list.num}</td>					
@@ -77,6 +78,8 @@
 				console.log(result.trim());
 			});	
 		});
+		
+		
 	</script>
 </body>
 </html>
