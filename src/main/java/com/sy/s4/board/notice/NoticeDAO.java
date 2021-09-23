@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.sy.s4.board.BoardDAO;
 import com.sy.s4.board.BoardDTO;
 import com.sy.s4.board.BoardFilesDTO;
+import com.sy.s4.board.CommentsDTO;
 import com.sy.s4.util.Pager;
 
 @Repository
@@ -18,6 +19,12 @@ public class NoticeDAO implements BoardDAO{
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.sy.s4.board.notice.NoticeDAO.";
 	
+	//board에 선언하고 오버라이딩 추천
+	public int setComment(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setComment", commentsDTO);
+	}
+	
+	//board에 선언하고 오버라이딩 추천
 	public List<BoardFilesDTO> getFiles(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"getFiles", boardDTO);

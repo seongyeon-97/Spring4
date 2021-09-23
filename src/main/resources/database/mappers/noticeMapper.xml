@@ -6,6 +6,11 @@
   
   <mapper namespace="com.sy.s4.board.notice.NoticeDAO">
   
+  <insert id="setComment" parameterMap="CommentsDTO">
+  	INSERT INTO COMMENTS 
+  	VALUES(COMMENTS_SEQ.NEXTVAL, #{num}, #{writer}, #{contents}, sysdate, #{board})
+  </insert>
+  
   <select id="getFiles" parameterType="BoardDTO" resultType="BoardFilesDTO">
   	select * from noticeFiles where num = #{num}
   </select>

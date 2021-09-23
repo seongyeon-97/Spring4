@@ -35,8 +35,15 @@ public class NoticeController {
 	}
 	
 	@PostMapping("comment")
-	public void setComment(CommentsDTO commentsDTO) throws Exception{
+	public ModelAndView setComment(CommentsDTO commentsDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		commentsDTO.setBoard("N");
+		int result = noticeService.setComment(commentsDTO);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", result);
+		
+		return mv;
+		
 	}
 	
 	@GetMapping("down")
