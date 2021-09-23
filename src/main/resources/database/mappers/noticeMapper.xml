@@ -6,6 +6,15 @@
   
   <mapper namespace="com.sy.s4.board.notice.NoticeDAO">
   
+  <delete id="setCommentDelete" parameterType="CommentsDTO">
+  	DELETE FROM COMMENTS WHERE COMMENTNUM = #{commentNum}
+  </delete>
+  
+  <select id="getCommentCount" parameterType="CommentsDTO" resultType="Long">
+  	SELECT COUNT(COMMENTNUM) FROM COMMENTS
+  	WHERE BOARD = #{board} AND NUM = #{num}
+  </select>
+  
   <insert id="setComment" parameterType="CommentsDTO">
   	INSERT INTO COMMENTS(COMMENTNUM, NUM, WRITER, CONTENTS, BOARD) 
   	VALUES(COMMENTS_SEQ.NEXTVAL, #{num}, #{writer}, #{contents}, #{board})
@@ -19,16 +28,13 @@
       INSERT INTO NOTICEFILES (FILENUM, NUM, FILENAME, ORINAME) VALUES (FILES_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
    </insert>
 
-	<select id="getCommentSelect" parameterType="BoardDTO" resultType="CommentsDTO">
-		SELECT * FROM COMMENTS WHERE NUM = #{num}
+	<select id="getCommentSelect" parameterType="CommentsDTO" resultType="CommentsDTO">
+		SELECT * FROM COMMENTS WHERE COMMENTNUM = #{commentNum}
 	</select>
 
-  <select id="getCommentList" resultType="CommentsDTO" parameterType="Pager">
-  	SELECT * FROM
-			(SELECT ROWNUM R, CM.* FROM
-			(SELECT*
-			FROM COMMENTS 
-			ORDER BY NUM DESC)CM)
+  <select id="getCommentList" resultType="CommentsDTO" parameterType="Map">
+	SELECT * FROM (SELECT ROWNUM R, C.* FROM (SELECT * FROM COMMENTS WHERE BOARD=#{comments.board} and NUM=#{comments.num} ORDER BY COMMENTNUM DESC) C)
+    WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
   </select>
   
   <select id="getList" resultType="NoticeDTO" parameterType="Pager">

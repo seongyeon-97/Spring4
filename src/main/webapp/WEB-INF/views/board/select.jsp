@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../temp/boot_head.jsp"></c:import>
+<style type="text/css">
+	.more{
+		cursor: pointer;
+	}
+</style>
 </head>
 <body>
 	<c:import url="../temp/boot_nav.jsp"></c:import>
@@ -32,6 +37,12 @@
 	</c:forEach>
 	
 	<hr>
+	
+	<!-- commentList -->
+	<div id="commentList" data-board-num="${dto.num}">
+		
+	</div>
+	
 		<div>
 			<div class="mb-3">
 			  <label for="writer" class="form-label">writer</label>
@@ -43,24 +54,11 @@
 			  <textarea class="form-control" placeholder="Leave a comment here" name="contents" id="contents"></textarea>
 			</div>
 			
-			<!-- <button id="comment" type="submit" class="btn btn-primary">WRITE</button> -->
-			<a href="./select?num=${dto.num}" id="comment">WRITE</a>		  	
+
+			<div class="mt-3 ml-0">
+            <button type="submit" class="btn btn-success" id="comment">WRITE</button>
+        	</div>		  	
 		</div>		
-		<table class="table table-striped table-hover">	
-			<tr align=center>
-				<th>COMMENTNUM</th><th>NUM</th><th>WRITER</th><th>CONTENTS</th><th>REGDATE</th><th>BOARD</th>				
-			</tr>
-			<c:forEach items="${comment}" var="list">
-				<tr align=center>
-					<td>${list.commentNum}</td>				
-					<td>${list.num}</td>					
-					<td>${list.writer}</td>			
-					<td><a href="./commentSelect?commentNum=${list.commentNum}">${list.contents}</a></td>
-					<td>${list.regdate}</td>
-					<td>${list.board}</td>
-				</tr>
-			</c:forEach>			
-		</table>			
 	<hr>
 	
 	<a href="./delete?num=${dto.num}">DELETE</a>
@@ -71,11 +69,53 @@
 	</c:if>
 	
 	<script type="text/javascript">
+		getCommentList(1);
+		
+		$('#commentList').on("click", ".commentDel", function () {
+			let commentNum = $(this).attr("data-comment-del");
+			$.ajax({
+				type : "GET",
+				url : "./commentDel",
+				data : {commentNum : commentNum},
+				success : function(result){
+					result = result.trim();
+					$('#commentList').html(result);
+				},
+				error : function(xhr, status, error){
+					console.log(error);
+				}
+			});
+		});
+		
+		$("#commentList").on("click", ".more", function () {
+			let pn = $(this).attr("data-comment-pn"); 
+			getCommentList(pn);
+		});
+	
+		function getCommentList(pageNumber) {
+			let num = $('#commentList').attr("data-board-num");
+			$.ajax({
+				type : "GET",
+				url : "./getCommentList",
+				data : {num : num, pn : pageNumber},
+				success : function(result){
+					result = result.trim();
+					$('#commentList').html(result);
+				},
+				error : function(xhr, status, error){
+					console.log(error);
+				}
+			});
+		}	
+	
+	
+	
 		$('#comment').click(function(){
 			let writer = $('#writer').val();
 			let contents = $('#contents').val();			
 			$.post('./comment', {num:'${dto.num}', writer:writer, contents:contents}, function (result) {
 				console.log(result.trim());
+				getCommentList();
 			});	
 		});
 		

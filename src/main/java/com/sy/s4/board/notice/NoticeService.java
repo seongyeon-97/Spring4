@@ -1,6 +1,7 @@
 package com.sy.s4.board.notice;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,8 +31,18 @@ public class NoticeService implements BoardService{
 	@Autowired
 	private FileManager fileManager;
 	
-	public List<CommentsDTO> getCommentList(Pager pager) throws Exception{
-		return noticeDAO.getCommentList(pager);
+	public int setCommentDelete(CommentsDTO commentsDTO) throws Exception{
+		return noticeDAO.setCommentDelete(commentsDTO);
+	}
+	
+	public List<CommentsDTO> getCommentList(CommentsDTO commentsDTO, Pager pager) throws Exception{
+		pager.setPerPage(5L);
+		pager.makeRow();
+		pager.makeNum(noticeDAO.getCommentCount(commentsDTO));
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("comments", commentsDTO);
+		map.put("pager", pager);
+		return noticeDAO.getCommentList(map);
 	}
 	
 	@Override
@@ -47,8 +58,8 @@ public class NoticeService implements BoardService{
 		return noticeDAO.getFiles(boardDTO);
 	}
 	
-	public List<CommentsDTO> getCommentSelect(BoardDTO boardDTO) throws Exception{
-		return noticeDAO.getCommentSelect(boardDTO);
+	public CommentsDTO getCommentSelect(CommentsDTO commentsDTO) throws Exception{
+		return noticeDAO.getCommentSelect(commentsDTO);
 	}
 	
 	@Override

@@ -29,6 +29,17 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService; 
 	
+	@GetMapping("getCommentList")
+	public ModelAndView getCommentList(CommentsDTO commentsDTO, Pager pager) throws Exception{	
+		commentsDTO.setBoard("N");
+		List<CommentsDTO> ar = noticeService.getCommentList(commentsDTO, pager);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("comments", ar);
+		mv.addObject("pager", pager);
+		mv.setViewName("common/ajaxList");
+		return mv;
+	}
+	
 	@ModelAttribute("board")
 	public String getBoard() {
 		return "notice";
@@ -54,12 +65,11 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@GetMapping("comment")
-	public ModelAndView setComment() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("board/select");
-		return mv;
-	}
+	/*
+	 * @GetMapping("comment") public ModelAndView setComment() throws Exception{
+	 * ModelAndView mv = new ModelAndView(); mv.setViewName("board/select"); return
+	 * mv; }
+	 */
 	
 	@GetMapping("insert")
 	public ModelAndView setInsert() throws Exception{
@@ -69,16 +79,19 @@ public class NoticeController {
 	}
 	
 	@PostMapping("comment")
-	public void setComment(CommentsDTO commentsDTO) throws Exception{
+	public ModelAndView setComment(CommentsDTO commentsDTO) throws Exception{
 		commentsDTO.setBoard("N");
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setComment(commentsDTO);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", result);
 		System.out.println(commentsDTO.getCommentNum());
 		System.out.println(commentsDTO.getNum());
 		System.out.println(commentsDTO.getWriter());
 		System.out.println(commentsDTO.getContents());
 		System.out.println(commentsDTO.getRegdate());
 		System.out.println(commentsDTO.getBoard());
+		return mv;
 //		mv.setViewName("redirect: ../");
 	}
 	
@@ -114,21 +127,38 @@ public class NoticeController {
 	 */
 	
 	@GetMapping("select")
-	public ModelAndView getSelect(BoardDTO boardDTO, Pager pager, CommentsDTO commentsDTO) throws Exception{
+	public ModelAndView getSelect(BoardDTO boardDTO, CommentsDTO commentsDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<CommentsDTO> car = noticeService.getCommentList(pager);
+
 		boardDTO = noticeService.getSelect(boardDTO);			
 		List<BoardFilesDTO> ar = noticeService.getFiles(boardDTO);
-		System.out.println(car.get(0).getCommentNum());
-		List<CommentsDTO> commentList= noticeService.getCommentSelect(boardDTO);
-		mv.addObject("comment", commentList);
-		mv.addObject("pager", pager);
-		mv.addObject("commentList", car);
+		//List<CommentsDTO> comments = noticeService.getCommentList();
+		
+		
+		//commentsDTO = noticeService.getCommentSelect(commentsDTO);
+		//mv.addObject("comment", commentsDTO);
+		//mv.addObject("pager", pager);
+		//mv.addObject("commentList", comments);
 		mv.addObject("dto", boardDTO);
 		//mv.addObject("fileList", ar);
 		mv.setViewName("board/select");
 		return mv;
 	}
+	
+	@GetMapping("commentDel")
+	   public ModelAndView setCommentDelete(CommentsDTO commentsDTO)throws Exception{
+	      int result = noticeService.setCommentDelete(commentsDTO);
+	      ModelAndView mv = new ModelAndView();
+	      String message = "Delete Fail";
+	      if(result>0) {
+	         message="Delete Success";
+	      }
+	      mv.addObject("msg", message);
+	      
+	      
+	      mv.setViewName("common/result");
+	      return mv;
+	   }
 	
 	@RequestMapping("delete")
 	public ModelAndView setDelete(BoardDTO boardDTO) throws Exception{

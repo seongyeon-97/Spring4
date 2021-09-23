@@ -1,6 +1,7 @@
 package com.sy.s4.board.notice;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,14 @@ public class NoticeDAO implements BoardDAO{
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.sy.s4.board.notice.NoticeDAO.";
+	
+	public int setCommentDelete(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setCommentDelete", commentsDTO);
+	}
+	
+	public Long getCommentCount(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCommentCount", commentsDTO);
+	}
 	
 	public List<BoardFilesDTO> getFiles(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -37,8 +46,8 @@ public class NoticeDAO implements BoardDAO{
 		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
 	}
 
-	public List<CommentsDTO> getCommentList(Pager pager) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getCommentList", pager);
+	public List<CommentsDTO> getCommentList(Map<String, Object> map) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getCommentList", map);
 	}
 	
 	@Override
@@ -47,8 +56,8 @@ public class NoticeDAO implements BoardDAO{
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
-	public List<CommentsDTO> getCommentSelect(BoardDTO boardDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getCommentSelect", boardDTO);
+	public CommentsDTO getCommentSelect(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCommentSelect", commentsDTO);
 	}
 	
 	@Override
