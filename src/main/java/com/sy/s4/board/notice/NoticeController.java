@@ -187,6 +187,15 @@ public class NoticeController {
 		return mv;
 	}
 	
+	@PostMapping("fileDelete")
+	public ModelAndView setFileDelete(BoardFilesDTO boardFilesDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setFileDelete(boardFilesDTO);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", result);
+		return mv;
+	}
+	
 	@GetMapping("update")
 	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception {
 		boardDTO = noticeService.getSelect(boardDTO);

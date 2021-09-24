@@ -24,6 +24,10 @@
   	VALUES(COMMENTS_SEQ.NEXTVAL, #{num}, #{writer}, #{contents}, #{board})
   </insert>
   
+  <delete id="setFileDelete" parameterType="BoardFilesDTO">
+  	DELETE NOTICEFILES WHERE FILENUM = #{fileNum}
+  </delete>
+  
   <select id="getFiles" parameterType="BoardDTO" resultType="BoardFilesDTO">
   	select * from noticeFiles where num = #{num}
   </select>

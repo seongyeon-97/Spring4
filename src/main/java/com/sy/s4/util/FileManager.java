@@ -29,4 +29,9 @@ public class FileManager {
 		
 		return fileName;
 	}
+	
+	public void fileDelete(File file)throws Exception{
+		
+		file.delete();
+	}
 }

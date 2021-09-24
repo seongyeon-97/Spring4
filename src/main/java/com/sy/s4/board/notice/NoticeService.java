@@ -49,6 +49,16 @@ public class NoticeService implements BoardService{
 		return noticeDAO.getCommentList(map);
 	}
 	
+	public int setFileDelete(BoardFilesDTO boardFilesDTO) throws Exception{
+		//폴더에서 파일 삭제 작업
+		String realPath = servletContext.getRealPath("/resources/upload/notice");
+		
+		File file = new File(realPath, boardFilesDTO.getFileName());
+		fileManager.fileDelete(file);		
+		
+		return noticeDAO.setFileDelete(boardFilesDTO);
+	}
+	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
