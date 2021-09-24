@@ -8,13 +8,17 @@
 		</tr>
 		<c:forEach items="${comments}" var="comment">
 			<tr align=center>
-				<td>${comment.commentNum}</td>										
-				<td>${comment.writer}</td>			
-				<td><a href="./commentSelect?commentNum=${comment.commentNum}">${comment.contents}</a></td>
+				<td>${comment.writer}</td>
+				<td>${comment.commentNum}</td>																
+				<td id="content${comment.commentNum}">						    		 
+			    <%-- <textarea class="form-control" placeholder="Leave a comment here" name="contents" id="" rows="3" readonly="readonly"></textarea> --%>
+			    <div>${comment.contents}</div>						
+				</td>
 				<td>${comment.regdate}</td>
 				<td>${comment.board}</td>
 				<td>
 				<c:if test="${member.id eq comment.writer}">
+				<button class="commentUpdate" data-comment-update="${comment.commentNum}">UPDATE</button>
 				<button class="commentDel" data-comment-del="${comment.commentNum}">DEL</button>
 				</c:if>
 				</td>

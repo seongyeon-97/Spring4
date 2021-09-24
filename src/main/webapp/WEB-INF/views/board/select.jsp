@@ -70,11 +70,63 @@
 	
 	<script type="text/javascript">
 		getCommentList(1);
+		let content='';
+		
+		$('#commentList').on('click', '.commentUpdate', function () {
+			console.log('update');			
+			let num = $(this).attr("data-comment-update");
+			content = $('#content'+num).text().trim();
+			$('#content'+num).children().css("display", "none");
+			let ta = '<textarea class="form-control" placeholder="Leave a comment here" name="contents" id="" rows="3">'
+			ta = ta + content.trim() + '</textarea>'
+			ta = ta + '<button type="button" class="btn btn-success up">UPDATE</button>'
+			ta = ta + '<button type="button" class="btn btn-danger can">CANCEL</button>'
+			$('#content'+num).append(ta);
+			
+		});		
+		
+		//cancel
+		$('#commentList').on('click', '.can', function () {
+			$(this).parent().children('div').css('display', 'block');
+			$(this).parent().children('textarea').remove();
+			$(this).parent().children('button').remove();
+		});
+		
+		$('#commentList').on('click', '.up', function () {
+			let contents = $(this).prev().val();
+			console.log(contents);
+			let cn = $(this).parent().prev().text().trim();
+			console.log(cn);
+			let selector=$(this);
+			$.ajax({
+				type : "POST",
+				url : "./commentUpdate",
+				data : {
+					commentNum :cn,
+					contents:contents
+				},
+				success : function (result) {
+					if(result.trim()>0){
+						alert('수정 성공');
+						//getCommentList(1);
+						selector.parent().children('div').text(contents);
+						selector.parent().children('div').css('display', 'block');
+						selector.parent().children('textarea').remove();
+						selector.parent().children('button').remove();
+					}else{
+						alert('수정 실패');
+					}
+				},
+				error : function () {
+					alert('수정실패');
+				}
+			})
+		});
 		
 		$('#commentList').on("click", ".commentDel", function () {
 			let commentNum = $(this).attr("data-comment-del");
 			$.ajax({
-				type : "GET",
+				type : "POST",
 				url : "./commentDel",
 				data : {commentNum : commentNum},
 				success : function(result){
