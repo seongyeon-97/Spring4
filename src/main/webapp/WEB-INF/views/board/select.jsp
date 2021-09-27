@@ -151,7 +151,8 @@
 				url : "./getCommentList",
 				data : {num : num, pn : pageNumber},
 				success : function(result){
-					result = result.trim();
+					//result = result.trim();
+					console.log(result);
 					$('#commentList').html(result);
 				},
 				error : function(xhr, status, error){
@@ -166,7 +167,8 @@
 			let writer = $('#writer').val();
 			let contents = $('#contents').val();			
 			$.post('./comment', {num:'${dto.num}', writer:writer, contents:contents}, function (result) {
-				console.log(result.trim());
+				alert(result);
+				console.log(result);
 				getCommentList();
 			});	
 		});

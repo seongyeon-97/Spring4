@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,7 +24,8 @@ import com.sy.s4.member.MemberDTO;
 import com.sy.s4.member.MemberService;
 import com.sy.s4.util.Pager;
 
-@Controller
+//@Controller
+@RestController
 @RequestMapping("/notice/**")
 public class NoticeController {
 	
@@ -30,14 +33,14 @@ public class NoticeController {
 	private NoticeService noticeService; 
 	
 	@GetMapping("getCommentList")
-	public ModelAndView getCommentList(CommentsDTO commentsDTO, Pager pager) throws Exception{	
+	public List<CommentsDTO> getCommentList(CommentsDTO commentsDTO, Pager pager) throws Exception{	
 		commentsDTO.setBoard("N");
 		List<CommentsDTO> ar = noticeService.getCommentList(commentsDTO, pager);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("comments", ar);
-		mv.addObject("pager", pager);
-		mv.setViewName("common/ajaxList");
-		return mv;
+		//mv.addObject("comments", ar);
+		//mv.addObject("pager", pager);
+		//mv.setViewName("common/ajaxList");
+		return ar;
 	}
 	
 	@ModelAttribute("board")
@@ -79,20 +82,16 @@ public class NoticeController {
 	}
 	
 	@PostMapping("comment")
-	public ModelAndView setComment(CommentsDTO commentsDTO) throws Exception{
+	public int setComment(CommentsDTO commentsDTO) throws Exception{
 		commentsDTO.setBoard("N");
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setComment(commentsDTO);
+		//String json = "{";
+		//json = json + "result:" + "\"" + result + "\"}";
 		mv.setViewName("common/ajaxResult");
 		mv.addObject("result", result);
-		System.out.println(commentsDTO.getCommentNum());
-		System.out.println(commentsDTO.getNum());
-		System.out.println(commentsDTO.getWriter());
-		System.out.println(commentsDTO.getContents());
-		System.out.println(commentsDTO.getRegdate());
-		System.out.println(commentsDTO.getBoard());
-		return mv;
-//		mv.setViewName("redirect: ../");
+		
+		return result;		
 	}
 	
 	@PostMapping("insert")
